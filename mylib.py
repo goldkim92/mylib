@@ -130,7 +130,7 @@ from csv import DictWriter
 try: os.makedirs('nmt_news')
 except: pass
 
-# make file if not exist
+# make file if not exist (csv file)
 try: open('nmt_news/stances.csv','x')
 except FileExistsError: pass
 
@@ -149,7 +149,18 @@ with open('news_dataset.csv',open_mode, encoding='UTF-8',newline='') as f:
                 }
         w.writerow(k_dict)
 
-#%% file and directory (csv txt file)
+        
+# write (txt file)
+test_txt = os.path.join('test_files.txt')
+try: os.remove(result_file)
+except: pass
+
+with open(test_txt, 'a') as f:
+    for file in test_files:
+        f.write(file + '\n')
+        
+        
+#%% file and directory (read) (csv txt file)
 path = os.path.join('CelebA','bbox.txt')
 file = open(path,'r')
 
